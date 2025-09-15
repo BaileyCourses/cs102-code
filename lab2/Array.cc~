@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cassert>
+#include "Array.h"
+
+using namespace std;
+
+Array::Array(size_t capacity, int default_value) {
+  _capacity = capacity;
+  
+  _contents = new int[_capacity];
+  for (size_t i = 0; i < _capacity; i++) {
+    put(i, default_value);
+  }
+}
+
+int Array::get(size_t index) const {
+  assert(index <= _capacity);
+  return _contents[index];
+}
+
+void Array::put(size_t index, int value) {
+  assert(index <= _capacity);
+  _contents[index] = value;
+}
+
+void Array::print() const {
+  for (size_t i = 0; i < _capacity; i++) {
+    cout << get(i) << endl;
+  }
+}
+
+void Array::input() {
+  for (size_t i = 0; i < _capacity; i++) {
+    int value;
+    cin >> value;
+    if (value == 0) 
+      break;
+    put(i, value);
+  }
+}
+
+void Array::copy(Array right) {
+  _capacity = right._capacity;
+  
+  _contents = new int[_capacity];
+  for (size_t i = 0; i < _capacity; i++) {
+    put(i, get(i));
+  }
+}
