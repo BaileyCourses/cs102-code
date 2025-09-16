@@ -3,18 +3,18 @@
 
 #include <cs102>
 
-class Array : cs102Object {
+class SafeArray : cs102Object {
  public:
-  Array(size_t capacity, int default_value);
+  SafeArray(size_t capacity, int default_value);
   int get(size_t index) const;
   void put(size_t index, int value);
   void print() const;
   void input();
-  void copy(Array right);
+  void copy(SafeArray other);
   
  private:
   size_t _capacity;
-  int* _contents;
+  int* _protectedArray;
 };
 
 #endif

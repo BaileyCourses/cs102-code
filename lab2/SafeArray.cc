@@ -1,35 +1,35 @@
 #include <iostream>
 #include <cassert>
-#include "Array.h"
+#include "SafeArray.h"
 
 using namespace std;
 
-Array::Array(size_t capacity, int default_value) {
+SafeArray::SafeArray(size_t capacity, int default_value) {
   _capacity = capacity;
   
-  _contents = new int[_capacity];
+  _protectedArray = new int[_capacity];
   for (size_t i = 0; i < _capacity; i++) {
     put(i, default_value);
   }
 }
 
-int Array::get(size_t index) const {
+int SafeArray::get(size_t index) const {
   assert(index <= _capacity);
-  return _contents[index];
+  return _protectedArray[index];
 }
 
-void Array::put(size_t index, int value) {
+void SafeArray::put(size_t index, int value) {
   assert(index <= _capacity);
-  _contents[index] = value;
+  _protectedArray[index] = value;
 }
 
-void Array::print() const {
+void SafeArray::print() const {
   for (size_t i = 0; i < _capacity; i++) {
     cout << get(i) << endl;
   }
 }
 
-void Array::input() {
+void SafeArray::input() {
   for (size_t i = 0; i < _capacity; i++) {
     int value;
     cin >> value;
@@ -39,10 +39,10 @@ void Array::input() {
   }
 }
 
-void Array::copy(Array right) {
-  _capacity = right._capacity;
+void SafeArray::copy(SafeArray other) {
+  _capacity = other._capacity;
   
-  _contents = new int[_capacity];
+  _protectedArray = new int[_capacity];
   for (size_t i = 0; i < _capacity; i++) {
     put(i, get(i));
   }
