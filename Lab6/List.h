@@ -24,5 +24,4 @@ class List {
   size_t _length;
 };
 
-std::ostream& operator << (std::ostream& stream, const List& list);
 #endif
