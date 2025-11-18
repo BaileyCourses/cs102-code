@@ -2,9 +2,6 @@ CC=g++
 CXX=g++
 CXXFLAGS=-g
 
-run: tests
-	./tests
-
 tests: tests.o test-driver.o List.o
 
 test-driver.o: test-driver.cc
@@ -12,6 +9,9 @@ test-driver.o: test-driver.cc
 tests.o: tests.cc List.h
 
 List.o: List.cc List.h
+
+run: tests
+	./tests
 
 valgrind:
 	valgrind --leak-check=yes driver
