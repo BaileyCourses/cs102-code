@@ -3,6 +3,7 @@ CXX=g++
 CXXFLAGS=-g
 
 run: lab
+	make lab 2>&1 | head -15
 	./lab
 
 lab: lab.o
