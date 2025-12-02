@@ -104,10 +104,12 @@ void Stack::copy(const Stack& other) {
   Node* prev = nullptr;
   for (Node* p = other._top; p; p = p->_next) {
     Node* node = new Node(p->_value);
-    if (prev)
-      node->_next = prev;
-    else
+    if (prev) {
+      prev->_next = node;
+    }
+    else {
       _top = node;
+    }
     prev = node;
   } 
 }
